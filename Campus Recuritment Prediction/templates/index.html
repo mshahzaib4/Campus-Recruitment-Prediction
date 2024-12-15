@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Recruitment Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://images.unsplash.com/photo-1496062502912-8db11a5ee122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fGJhY2tncm91bmR8ZW58MHx8fHwxNjcyMjM0Njc4&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0056b3;
+            font-size: 2.8em;
+            text-shadow: 1px 1px 2px rgba(0, 86, 179, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #444;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: #0056b3;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #004494;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Campus Recruitment Prediction</h1>
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ssc_p">Secondary School Score (SSC %):</label>
+                <input type="number" id="ssc_p" name="ssc_p" placeholder="Enter your SSC score (%)" step="0.01" min="0" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="ssc_b">Secondary School Board:</label>
+                <select id="ssc_b" name="ssc_b" required>
+                    <option value="1">Central</option>
+                    <option value="0">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hsc_p">High School Score (HSC %):</label>
+                <input type="number" id="hsc_p" name="hsc_p" placeholder="Enter your HSC score (%)" step="0.01" min="0" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="hsc_b">High School Board:</label>
+                <select id="hsc_b" name="hsc_b" required>
+                    <option value="1">Central</option>
+                    <option value="0">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="hsc_s">High School Stream:</label>
+                <select id="hsc_s" name="hsc_s" required>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Science">Science</option>
+                    <option value="Arts">Arts</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="degree_p">Degree Score (%):</label>
+                <input type="number" id="degree_p" name="degree_p" placeholder="Enter your Degree score (%)" step="0.01" min="0" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="degree_t">Degree Stream:</label>
+                <select id="degree_t" name="degree_t" required>
+                    <option value="Sci&Tech">Sci&Tech</option>
+                    <option value="Comm&Mgmt">Comm&Mgmt</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="workex">Work Experience:</label>
+                <select id="workex" name="workex" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="etest_p">ETest Score (%):</label>
+                <input type="number" id="etest_p" name="etest_p" placeholder="Enter your ETest score (%)" step="0.01" min="0" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="specialisation">Specialisation:</label>
+                <select id="specialisation" name="specialisation" required>
+                    <option value="1">Mkt&Fin</option>
+                    <option value="0">Mkt&HR</option>
+                </select>
+            </div>            
+            <div class="form-group">
+                <label for="mba_p">MBA Score (%):</label>
+                <input type="number" id="mba_p" name="mba_p" placeholder="Enter your MBA score (%)" step="0.01" min="0" max="100" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="1">Placed</option>
+                    <option value="0">Not Placed</option>
+                </select>
+            </div>
+            <input type="submit" class="submit-button" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
