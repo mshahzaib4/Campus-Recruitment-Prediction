@@ -46,4 +46,3 @@ For any questions or suggestions, please feel free to contact me on LinkedIn.
 ## Webpage Glimpse:
 
 ![Index](index.png)
-![Prediction](prediction.png)
